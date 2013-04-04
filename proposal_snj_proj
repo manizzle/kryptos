@@ -1,0 +1,24 @@
+1)
+-Create an llvm plugin/module/pass? that will do two things.
+        1) After code has been parsed, for all user-defined functions,
+           a wrapper function will be made that takes in the same arguments
+           as the original user-defined functions. This function will have
+           some code that does the following:
+                A) Fetches the address,len(in bytes), and key
+                   of the original function.
+                B) Runs through a function.
+                   This function is taken from a .c file that is read in and used
+                   as the main packer. This function is used to
+                   to decrypt the address space of the original function.
+                C) Uses original function's passed arguments
+                   and jumps to original function's address
+        2) During Code generation for whichever architecture, 
+           a list of function addresses which have been marked "encrypt"?
+           will be encrypted using its appropriate key and len of function.
+           This lookup table should be the same as the one used by 1A.
+            
+
+-some ideas about taking in a user-defined packer function and make it a llvm
+function. have some c code that packs the binary, compile with 
+
+2)
