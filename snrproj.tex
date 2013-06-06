@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{caption}
+
+\usepackage[margin=1.0in]{geometry}
+
+\pagestyle{myheadings}
+\markright{\hfill CALIFORNIA POLYTECHNIC STATE UNIVERSITY, SAN LUIS OBISPO\hfill}
+
+\title{Binary Packers(Cryptors)}
+\author{Murtaza Munaim}
+\date{June 15 2013}
+
+\begin{document}
+\maketitle
+
+\section{Abstract}
+The compiler  a vital component  piece of source code, parse the syntactic structure of the text, apply optimizations, and produce opcodes for the
+target machine that the code is supposed to run on be it x86, ARM, MIPS, etc.  take a piece of source code, do some analysis, and produce and executable file. 
+We configured and measured the output and input voltages of various
+operational amplifier circuit configurations.
+
+\section{Procedure}
+\begin{enumerate}
+\item Built an inverting amplifier using a static $R_{in} = 10 k\Omega $ \newline and $R_{f} = [10k\Omega, 15k\Omega, 27k\Omega, 47k\Omega, 100k\Omega$] \newline
+\includegraphics[width=6cm,height=6cm,keepaspectratio]{invert.jpg}
+\item Measured voltage and phase across the $V_{out}$ and $V_{in}$ to calculate actual gain and phase differences for the configurations
+\item Increase input voltage until clipping was visible on the op-amp configuration.
+\item Repeated steps 1-3 but using a non-inverting amplifier configuration \newline 
+\includegraphics[width=6cm,height=6cm,keepaspectratio]{noninvert.jpg}
+\item Built a voltage follower circuit and applied a sinusoidal input \newline 
+\includegraphics[width=6cm,height=6cm,keepaspectratio]{follower.jpg}
+\begin{enumerate}
+\item Changed input to a $10V_{pp}$ square wave. Increased voltage until clipping was visible.
+\item Calculated the slope of the rising edge of the output of the square wave
+\end{enumerate}
+\item Built a summing amplifier circuit using resistor values of  {$R_{1in} = 10k\Omega$, $R_{2in} = 27k\Omega$, $R_{3in} = \infty$ \newline
+$R_{f} = 10k\Omega$} The voltages set to : {$V_{1in} = 2.0V$, $V_{2in} = 2.0V$, $V_{3in} = 0V$}. The output voltage was measured.
+\item Built an integrator amplifier circuit using an input resistor of $R_{in} = 100k\Omega$, $V_{in} = 5.0V$, and $C_{f} = 0.05$$\mu$F
+\begin{enumerate}
+\item Applied a $10V_{pp}$ 500Hz square wave to the input of the integrator
+\item Connected a large $1M\Omega$ resistor across the feedback capacitor to correct the signal from drift
+\item Measured both the input and output signal of the integrator with 0DC input and AC coupled for clean signal
+\end {enumerate}
+\end{enumerate}
+
+\section{Experimental Data}
+
+\subsection{Inverting Amplifier}
+
+\begin{table}[!h]\LARGE
+    \begin{center}
+        \begin{tabular}{|c||c|c|c|} \hline
+            $R_{B} (k\Omega)$ & $V_{O}$ (V) & $A_{TH}$ & $A_{EXP}$\\ \hline
+            10 & 0.248 & -1 & -1.046 \\ \hline
+            15 & 0.344 & -1.5 & -1.45\\ \hline
+            27 & 0.575 & -2.7 & -2.43\\ \hline
+            47 & 1.000 & -4.7 & -4.35\\ \hline
+            100 & 2.06 & -10.0 & -8.72\\ \hline
+        \end{tabular}
+        \caption{Inverting Amplifier Measurements}
+        \label{invertchart}
+    \end{center}
+\end{table}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{1_10k.jpg}
+\captionof{figure}{Inverting Amplifier Vi = 0.2V, Rb = 10k}\label{10kinvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{1_15k.jpg}
+\captionof{figure}{Inverting Amplifier Vi = 0.2V, Rb = 15k}\label{15kinvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{1_27k.jpg}
+\captionof{figure}{Inverting Amplifier Vi = 0.2V, Rb = 27k}\label{27kinvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{1_47k.jpg}
+\captionof{figure}{Inverting Amplifier Vi = 0.2V, Rb = 47k}\label{47kinvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{1_100k.jpg}
+\captionof{figure}{Inverting Amplifier Vi = 0.2V, Rb = 100k}\label{100kinvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{3_sin200.jpg}
+\captionof{figure}{10k Inverting Amplifier Provided with 200Hz Input}\label{200invert}
+\end{center}
+\vspace{10pt}
+
+
+\subsection{Non-Inverting Amplifier}
+
+\begin{table}[!h]
+    \begin{center}
+        \begin{tabular}{|c||c|c|c|} \hline
+            $R_{B} (k\Omega)$ & $V_{O}$ (V) & $A_{TH}$ & $A_{EXP}$\\ \hline
+            10 & 0.356 & 2 & 1.78 \\ \hline
+            15 & 0.425 & 2.5 & 2.12\\ \hline
+            27 & 0.588 & 3.7 & 2.94\\ \hline
+            47 & 0.940 & 5.7 & 4.7\\ \hline
+            100 & 1.670 & 11.0 & 8.35\\ \hline
+        \end{tabular}
+        \caption{Non-Inverting Amplifier Measurements}
+        \label{noninvertchart}
+    \end{center}
+\end{table}
+\vspace{10pt}
+
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{2_10k.jpg}
+\captionof{figure}{Non-Inverting Amplifier Vi = 0.2V, Rb = 10k}\label{10knoninvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{2_15k.jpg}
+\captionof{figure}{Non-Inverting Amplifier Vi = 0.2V, Rb = 15k}\label{15knoninvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{2_27k.jpg}
+\captionof{figure}{Non-Inverting Amplifier Vi = 0.2V, Rb = 27k}\label{27knoninvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{2_47k.jpg}
+\captionof{figure}{Non-Inverting Amplifier Vi = 0.2V, Rb = 47k}\label{47knoninvert}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{2_100k.jpg}
+\captionof{figure}{Non-Inverting Amplifier Vi = 0.2V, Rb = 100k}\label{100knoninvert}
+\end{center}
+\vspace{10pt}
+
+
+\subsection{Voltage Follower}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{clipping_of_opamp.jpg}
+\captionof{figure}{Vo Distortion, Rb = 27k}\label{clip27k}
+\end{center}
+\vspace{10pt}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{slew_rate.jpg}
+\captionof{figure}{Voltage Follower Slew Rate, Vi = 10V}\label{followslew}
+\end{center}
+\vspace{10pt}
+
+\subsection{Summing Amplifier}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{summing_4.jpg}
+\captionof{figure}{Summing Amplifier}\label{summing}
+\end{center}
+\vspace{10pt}
+
+\subsection{Integrating Amplifier}
+
+\begin{center}
+\includegraphics[width=10cm,height=8cm,keepaspectratio]{integrator.jpg}
+\captionof{figure}{Integrator Amplifier}\label{integamp}
+\end{center}
+\vspace{10pt}
+
+
+\section{Discussion}
+\begin{enumerate}
+\item One
+\item Two
+\item Three
+\item Four
+\item Five
+\end{enumerate}
+
+\section{Conclusions}
+The op-amp is awesome.
+\subsection{Murtaza Munaim}
+Our various builds of op-amps showed some interesting features of the op-amps. The slew-factor was measured and recorded for
+our LM741. This is an interesting feature of the op-amp as it describes how tight of a bandwith that this op-amp can be used 
+for use in filter design. Another interesting feature of the op-amp I inferred from the data is that as the feedback resistor's
+value increased, the op-amps gain's error rate increased as well, deviating more and more from the theoretical gain value.
+\subsection{Brandon Ivy}
+\subsection{Nathik Azad}
+
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{document}

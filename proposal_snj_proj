@@ -22,3 +22,10 @@
 function. have some c code that packs the binary, compile with 
 
 2)
+-use llvm to insert a set of nop instructions or some other sort of 
+random binary pattern before the code generated for an function as well
+as markers describing the layout of the function in address order.
+-use libbfd to find these pattern in the binary code to overwrite with the
+decryption code, and then use the function markers written by the ealier step
+to encrypt the function binary code, thus, an after-compile binary packer
+but using help from a compiler plugin.
