@@ -29,3 +29,13 @@ as markers describing the layout of the function in address order.
 decryption code, and then use the function markers written by the ealier step
 to encrypt the function binary code, thus, an after-compile binary packer
 but using help from a compiler plugin.
+
+In the general sense, mprotect is the perferred choice (on POSIX conforming systems) under sys/mman.h (check http://linux.die.net/man/2/mprotect). Simply get the address and system page count of the executable section of your process and call mprotect to request permission permissions; write to it; then, call mprotect again to release write permission.
+
+However, if this is meant to be on low-level routines where speed is of absolute importance (or mprotect is not available) then you'll want to compile the library with its .text section writable as calling mprotect most likely issues a Translation Lookaside Buffer (TLB) flush that (especially in a multi-processor environment) can and will cause a bottleneck. If the specific system is using hardware protection via paging (which nearly all are now) then the only way to change the protection is by doing a TLB flush which must be executed on every referenced page, referenced page table (group of pages), referenced page directory (group of page tables) and every processor. To top it off, this must be executed in ring 0 which requires a syscall which just puts the cherry on top for overhead.
+
+In the latter case, the easiest solution would be to compile the library normally and then objcopy it with --writable-text (as mentioned by ggiroux).
+
+Another solution would be to define the linker map file linker.ld yourself. Then you may specify permissions of any section explicitly. Its not too complicated; if system-dependent. Refer to documentation at http://www.math.utah.edu/docs/info/ld_3.html. You could also look at your system provided linker.ld file and modify it from there. Passing -Wl,--verbose to gcc will instruct the linker to spit out all relevant files (including its default linker.ld) in which you could then modify the permissions of the .text section and recompile the library (forevermore) using the new linker.ld file.
+
+To summarize, my recommenda
