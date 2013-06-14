@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 double func1(int x) {
     return 1.00 * (x * 5);
 }
