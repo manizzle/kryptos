@@ -128,7 +128,6 @@ libbfd stands for Binary File Descriptor library. It is a useful library to do p
 \section{Testing}
 The testing of this project was simple. First, proper functionality of the code to be able to add arbitrary code was tested. After being able to add in any instrumentation code I wanted, I verified the added instructions using objdump -d to see the resulting native opcodes. Ssome sample packer/unpacker stubs were written in C so that I could insert real packing code into arbitrary C files. Code generation and execution of the IR->native code was done on every iteration so that original functionality of the program to the packed wasn't modified too much.
 
-
 \section{Conclusions}
 Utilizing a mix of mid-compilation and post-compilation data helps to create a packer tool that is a bit smarter than the average malware. Packing executable code on a function by funtion level makes the problem of statically analyzing malware alot harder, and requires a dynamic analysis approach, which in most cases is undesired. Dynamic analysis requires live analysis and when running malware, predicting what the code will do that is potentially dangerous is alot better then just making a safe enviornment and letting it go boom. On a case by case basis, this protocol could be reverse engineered, for the basis on packer insertion is relatively simple. It can be made a powerful by the choice of packer/unpacker stubs that the user of Kryptos chooses to write, be it an easy xor encryption stub or maybe heavy-weight AES with some anti-debug tricks included.
 
